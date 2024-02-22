@@ -26,14 +26,17 @@ let customization = {
      */
     levelValues: [
         "Normal",
-        "Shift Start",
-        "Shift End",
-        "Fault",
-        "Beam Loss",
-        "Beam Configuration",
-        "Crew",
-        "Expert Intervention Call",
-        "Incident"
+	"FATAL",
+	"ERROR",
+	"WARN",
+	"INFO",
+	"IDEA",
+	"DOCU",
+	"MEASURE",
+	"TODO",
+	"DONE",
+	"FIXED",
+	"WOW"    
     ],
 
     /**
@@ -54,7 +57,7 @@ let customization = {
     /**
      * Default search params
      */
-    defaultSearchParams: {start: "12 hours", end: "now"},
+    defaultSearchParams: {start: "24 hours", end: "now"},
     defaultSortDirection: "down",
 
     /**
