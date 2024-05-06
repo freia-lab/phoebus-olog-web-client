@@ -21,10 +21,12 @@ import LoginDialog from '../LoginLogout/LoginDialog';
 import LogoutDialog from '../LoginLogout/LogoutDialog';
 import packageInfo from '../../../package.json';
 import SkipToContent from 'components/shared/SkipToContent';
-import { AppBar, Toolbar, Typography, Button, Link as MuiLink, List, ListItem, Stack, Box } from '@mui/material';
-import { InternalButtonLink } from "components/shared/InternalLink";
+import { AppBar, Toolbar, Typography, Button, Link as MuiLink, List, ListItem, Stack, Box, IconButton } from '@mui/material';
+import { Link as RouterLink } from "react-router-dom";
+import { InternalButtonLink } from "components/shared/Link";
 import { useShowLogin, useShowLogout, useUser } from "features/authSlice";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import customization from "config/customization";
 
 /**
@@ -52,7 +54,7 @@ export const Banner = () => {
       position="static" 
       elevation={0}
       sx={{
-        backgroundColor: "#343a40",
+        backgroundColor: "primary",
         width: "100%"
       }}
     >
@@ -69,13 +71,13 @@ export const Banner = () => {
             padding: 0
           }}>
             <ListItem display="flex">
-              <MuiLink component={Link} to="/" aria-label='home' sx={{ color: "essWhite.main", textDecoration: "none !important"}}>
+              <MuiLink component={Link} to="/" aria-label='home' sx={{ color: "ologWhite.main", textDecoration: "none !important"}}>
                 <Typography variant="h6" component="p">{packageInfo.name}</Typography>
-                <Typography variant="body2">{packageInfo.version}</Typography>
+                <Typography variant="body2">{customization.VERSION}</Typography>
               </MuiLink>
             </ListItem>
             <ListItem>
-              <InternalButtonLink to="/logs/create" variant="contained">
+              <InternalButtonLink to="/logs/create" variant="outlined" color="ologWhite">
                 New Log Entry
               </InternalButtonLink>
             </ListItem>
@@ -88,7 +90,8 @@ export const Banner = () => {
                 <ListItem>
                   <InternalButtonLink
                     to="/beta"
-                    variant="contained"
+                    variant="outlined"
+                    color="ologWhite"
                     aria-label="Navigate to Beta App"
                     endIcon={<AutoAwesomeIcon />}
                   >
@@ -98,10 +101,21 @@ export const Banner = () => {
               </List>
             </Box> : null
           }
+          <nav aria-label="help menu">
+            <List sx={{
+              display: "flex"
+            }}>
+              <ListItem>
+                <IconButton component={RouterLink} to="/help" color="inherit" >
+                  <HelpCenterIcon titleAccess="help" />
+                </IconButton>
+              </ListItem>
+            </List>
+          </nav>
           <nav aria-label="user menu">
             <List>
               <ListItem>
-                <Button onClick={handleClick} variant="contained" sx={{ whiteSpace: "nowrap" }} >
+                <Button onClick={handleClick} variant="outlined" color="ologWhite" sx={{ whiteSpace: "nowrap" }} >
                   {user?.userName ? user.userName : 'Sign In'}
                 </Button>
               </ListItem>
